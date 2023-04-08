@@ -3,10 +3,10 @@ import { Unity, useUnityContext } from "react-unity-webgl";
 
 function Home() {
   const [unityAssets, setUnityAssets] = useState({
-    loaderUrl: "/Build/WebTest4.loader.js",
-    dataUrl: "/Build/WebTest4.data",
-    frameworkUrl: " /Build/WebTest4.framework.js",
-    codeUrl: "/Build/WebTest4.wasm",
+    loaderUrl: "games/WebTest4.loader.js",
+    dataUrl: "games/WebTest4.data",
+    frameworkUrl: " games/WebTest4.framework.js",
+    codeUrl: "games/WebTest4.wasm",
   })
   const { unityProvider, loadingProgression, isLoaded } = useUnityContext(unityAssets);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
