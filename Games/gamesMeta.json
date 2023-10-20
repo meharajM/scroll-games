@@ -1,0 +1,19 @@
+[
+    {
+      "id": "game1",
+      "name": "Game 1",
+      "unityLoaderJsPath": "https://github.com/meharajM/scroll-games/blob/main/Games/1/Build/WebTest4.loader.js",
+      "dataUrl": "https://github.com/meharajM/scroll-games/blob/main/Games/1/Build/WebTest4.data",
+      "frameworkUrl": "https://github.com/meharajM/scroll-games/blob/main/Games/1/Build/WebTest4.framework.js",
+      "codeUrl": "https://github.com/meharajM/scroll-games/blob/main/Games/1/Build/WebTest4.wasm"
+    },
+    {
+      "id": "game2",
+      "name": "Game 2",
+      "unityLoaderJsPath": "https://github.com/meharajM/scroll-games/blob/main/Games/1/Build/WebTest4.loader.js",
+      "dataUrl": "https://github.com/meharajM/scroll-games/blob/main/Games/1/Build/WebTest4.data",
+      "frameworkUrl": "https://github.com/meharajM/scroll-games/blob/main/Games/1/Build/WebTest4.framework.js",
+      "codeUrl": "https://github.com/meharajM/scroll-games/blob/main/Games/1/Build/WebTest4.wasm"
+    }
+  ]
+  
