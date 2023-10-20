@@ -1,0 +1,17 @@
+.mobile-view {
+    /* Styles for mobile view go here */
+    width: 100vw;
+    height: 100vh;
+    background-color: gray;
+    margin: 0;
+    position: relative;
+  }
+  
+  .desktop-view {
+    /* Styles for desktop view go here */
+    width: 375px; 
+    height: 667px;
+    background-color: gray;
+    position: relative;
+  }
+  
