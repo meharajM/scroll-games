@@ -2,10 +2,10 @@
     {
       "id": "game1",
       "name": "Game 1",
-      "unityLoaderJsPath": "/Games/1/Build/WebTest4.loader.js",
-      "dataUrl": "/Games/1/Build/WebTest4.data",
-      "frameworkUrl": "/Games/1/Build/WebTest4.framework.js",
-      "codeUrl": "/Games/1/Build/WebTest4.wasm"
+      "unityLoaderJsPath": "/Games/Runnerv2/Build/Runnerv2.loader.js",
+      "dataUrl": "/Games/Runnerv2/Build/Runnerv2.data",
+      "frameworkUrl": "/Games/Runnerv2/Build/Runnerv2.framework.js",
+      "codeUrl": "/Games/Runnerv2/Build/Runnerv2.wasm"
     },
     {
       "id": "game2",

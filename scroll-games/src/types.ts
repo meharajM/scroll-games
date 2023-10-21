@@ -3,6 +3,6 @@ export interface Game {
   dataUrl: string;
   frameworkUrl: string;
   codeUrl: string;
-
+  
   // Add other properties as needed
 }
