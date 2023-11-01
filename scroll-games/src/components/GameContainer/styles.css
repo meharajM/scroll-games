@@ -4,7 +4,8 @@
     height: 100vh;
     background-color: gray;
     margin: 0;
-    position: relative;
+    position: absolute;
+    top: 0;
   }
   
   .desktop-view {
@@ -12,6 +13,14 @@
     width: 375px; 
     height: 667px;
     background-color: gray;
-    position: relative;
+    position: absolute;
+    top: 0;
+  }
+
+  .overlay {
+    position: sticky;
+    top: 0;
+    left: 0;
+    /* height: 100px; */
   }
   
