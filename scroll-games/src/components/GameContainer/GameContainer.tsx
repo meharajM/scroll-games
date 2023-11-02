@@ -5,6 +5,7 @@ import './styles.css';
 import { Game } from '../../types';
 import { getGamesMetaUrl } from '../../apiRoutes';
 import UnityComponent from '../UnityComponent';
+import Overlay from '../Overlay/Overlay';
 
 const GameContainer = () => {
   const [gamesMeta, setGamesMeta] = useState<Game[]>([]);
@@ -30,14 +31,20 @@ const GameContainer = () => {
   const handlers = useSwipeable({
       onSwipedUp: () => {
         console.log("swipe up")
-        setCurrentIndex(prevIndex => (prevIndex + 1) % gamesMeta.length)
+        loadNext();
       },
       onSwipedDown: () => {
         console.log("swipe down")
-        setCurrentIndex(prevIndex => (prevIndex - 1 + gamesMeta.length) % gamesMeta.length)
+        loadPrev();
       }, 
   })
 
+  const loadNext = () => {
+    setCurrentIndex(prevIndex => (prevIndex + 1) % gamesMeta.length)
+  }
+  const loadPrev = () => {
+    setCurrentIndex(prevIndex => (prevIndex - 1 + gamesMeta.length) % gamesMeta.length)
+  }
   useEffect(() => {
     setCurrentGame(gamesMeta[currentIndex]);
   }, [currentIndex, gamesMeta]);
@@ -47,7 +54,14 @@ const GameContainer = () => {
     
       <div  {...handlers} className={isMobileDevice ? "mobile-view" : "desktop-view"}>
         {!gamesMeta.length && !currentGame && <div>Loading info....</div>}
-        {currentGame && <UnityComponent currentGame={currentGame} key={currentGame.id}/>}
+        {currentGame && 
+        <>
+        
+            <UnityComponent currentGame={currentGame} key={currentGame.id} loadNext={loadNext} loadPrev={loadPrev}/>
+
+        </>
+        
+        }
       </div>
    
   );
