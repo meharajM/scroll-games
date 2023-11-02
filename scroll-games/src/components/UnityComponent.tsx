@@ -1,14 +1,13 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import Unity, {  UnityContext,  } from 'react-unity-webgl';
-import { Game } from '../types';
+import { Game, Message } from '../types';
 import { formatUrl } from '../apiRoutes';
-import Overlay from './Overlay/Overlay';
+
 type PropTypes = {
     currentGame: Game;
-    loadNext: () => void;
-    loadPrev: () => void;
+    message: Message | null;
 }
-const UnityComponent = ({currentGame, loadNext, loadPrev}: PropTypes) => {
+const UnityComponent = ({currentGame, message}: PropTypes) => {
   const [progression, setProgression] = useState(0);
   const config = {
     loaderUrl: formatUrl(currentGame?.unityLoaderJsPath?? ""),
@@ -20,7 +19,6 @@ const UnityComponent = ({currentGame, loadNext, loadPrev}: PropTypes) => {
   const unityContext = useMemo(() => new UnityContext(config), [currentGame]);
 
   useEffect(function () {
-    console.log("new game", window.myMethod)
     unityContext.on("progress", function (progression) {
       setProgression(progression);
     });
@@ -51,20 +49,22 @@ const UnityComponent = ({currentGame, loadNext, loadPrev}: PropTypes) => {
   }, [progression]);
 
 
-  const sendMessage = () => {
+   useEffect(() => {
     console.log("sending message")
-    unityContext.send('GameController', "SpawnEnemies", 10)
-  }
+    if(message) {
+      unityContext.send(message.controller, message.method, message.value)//unityContext.send('GameController', "SpawnEnemies", 10)
+    }
+  }, [message])
 
   return (
     <div>
-        <Overlay sendMessage={sendMessage} loadNext={loadNext} loadPrev={loadPrev}>
+       
             {progression < 1 && <p>Loading Game {currentGame.id}... {Math.round(progression * 100)}%</p>}
           
           <Unity unityContext={unityContext} style={{
               width: '100vw', height: '100vh'
           }}/>
-        </Overlay>
+        
         {/* <div className='overlay'>
              
             </div> */}
