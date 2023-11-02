@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import Unity, {  UnityContext,  } from 'react-unity-webgl';
 import { Game } from '../types';
 import { formatUrl } from '../apiRoutes';
@@ -17,21 +17,43 @@ const UnityComponent = ({currentGame, loadNext, loadPrev}: PropTypes) => {
     codeUrl: formatUrl(currentGame?.codeUrl?? ""),
   }
   
-  const unityContext= new UnityContext(config)
+  const unityContext = useMemo(() => new UnityContext(config), [currentGame]);
 
   useEffect(function () {
-    console.log("new game")
+    console.log("new game", window.myMethod)
     unityContext.on("progress", function (progression) {
       setProgression(progression);
     });
-   
+    unityContext.on("myMethod", (message: string) => {
+      console.log("Message from Unity: " + message);
+      alert(message)
+    });
+    unityContext.on("myMethodInt", (message: number) => {
+      console.log("Message myMethodInt: " + message);
+      alert(message)
+    });
     
-  }, []);
+  }, [unityContext]);
+
+  useEffect(function () {
+    if(progression >= 1) {
+      console.log("loaded")
+
+      unityContext.on("myMethod", (message: string) => {
+        console.log("Message from Unity: " + message);
+        alert(message)
+      });
+      unityContext.on("myMethodInt", (message: number) => {
+        console.log("Message myMethodInt: " + message);
+        alert(message)
+      });
+    }
+  }, [progression]);
+
 
   const sendMessage = () => {
     console.log("sending message")
-    unityContext.send('Canvas', "Send_Message", "rajkumar")
-    unityContext.send('Canvas', "Send_Messageint", 133)
+    unityContext.send('GameController', "SpawnEnemies", 10)
   }
 
   return (
