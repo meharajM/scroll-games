@@ -1,6 +1,7 @@
-import React, { ReactNode } from 'react';
-import './Overlay.css';
+import React, { ReactNode, useState } from 'react';
 import { useSwipeable } from 'react-swipeable';
+import { FiShare2, FiThumbsUp, FiThumbsDown, FiSend, FiArrowUp, FiArrowDown } from 'react-icons/fi';
+import './Overlay.css';
 
 interface OverlayProps {
   children: ReactNode;
@@ -10,26 +11,45 @@ interface OverlayProps {
 }
 
 const Overlay: React.FC<OverlayProps> = ({ children, sendMessage, loadPrev, loadNext }) => {
+  const [bgColorClass, setBgColor] = useState('transparent');
   const handlers = useSwipeable({
+    onSwiping: (eventData) => {
+      if (eventData.dir === 'Up' || eventData.dir === 'Down') {
+        setBgColor(eventData.dir)
+      }
+    },
     onSwipedUp: () => {
-      console.log("swipe up")
       loadNext();
     },
     onSwipedDown: () => {
-      console.log("swipe down")
       loadPrev();
     }, 
+    trackMouse: true
 })
   return (
-    <div className="overlay"  {...handlers} >
+    <div className="overlay" >
       <div className="content">{children}</div>
-      <div className="actions">
-        <button className="action-button">Share</button>
-        <button className="action-button">Like</button>
-        <button className="action-button">Dislike</button>
-        <button onClick={sendMessage} className='action-button'>send message</button>
-        <button className='action-button' onClick={loadPrev}>Last game</button>
-        <button className='action-button' onClick={loadNext}>Next Game</button>
+      <div className={`actions ${bgColorClass}`} {...handlers} >
+        <button className="action-button">
+        <FiShare2 size={24} />
+        </button>
+        <button className="action-button">
+          <FiThumbsUp size={24}/>
+        </button>
+        <button className="action-button">
+          <FiThumbsDown size={24}/>
+        </button>
+        <button onClick={sendMessage} className='action-button'>
+          <FiSend size={24}/>
+          Send Message
+        </button>
+        <button className='action-button' onClick={loadPrev}>
+          <FiArrowUp size={24}/>
+        </button>
+        <button className='action-button' onClick={loadNext}>
+          <FiArrowDown size={24}/>
+        </button>
+
 
       </div>
     </div>

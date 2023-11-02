@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
-import { useSwipeable } from 'react-swipeable';
 import './styles.css';
 import { Game } from '../../types';
 import { getGamesMetaUrl } from '../../apiRoutes';
 import UnityComponent from '../UnityComponent';
-import Overlay from '../Overlay/Overlay';
 
 const GameContainer = () => {
   const [gamesMeta, setGamesMeta] = useState<Game[]>([]);
@@ -28,16 +26,7 @@ const GameContainer = () => {
       .catch((error: Error) => console.error(error));
   }, []);
 
-  const handlers = useSwipeable({
-      onSwipedUp: () => {
-        console.log("swipe up")
-        loadNext();
-      },
-      onSwipedDown: () => {
-        console.log("swipe down")
-        loadPrev();
-      }, 
-  })
+  
 
   const loadNext = () => {
     setCurrentIndex(prevIndex => (prevIndex + 1) % gamesMeta.length)
@@ -52,7 +41,7 @@ const GameContainer = () => {
   
   return (
     
-      <div  {...handlers} className={isMobileDevice ? "mobile-view" : "desktop-view"}>
+      <div className={isMobileDevice ? "mobile-view" : "desktop-view"}>
         {!gamesMeta.length && !currentGame && <div>Loading info....</div>}
         {currentGame && 
         <>
