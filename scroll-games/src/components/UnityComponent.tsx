@@ -16,37 +16,27 @@ const UnityComponent = ({currentGame, message}: PropTypes) => {
     codeUrl: formatUrl(currentGame?.codeUrl?? ""),
   }
   
-  const unityContext = useMemo(() => new UnityContext(config), [currentGame]);
+  const unityContext = useMemo(() => new UnityContext(config), [currentGame.id]);
 
   useEffect(function () {
     unityContext.on("progress", function (progression) {
       setProgression(progression);
     });
-    unityContext.on("myMethod", (message: string) => {
-      console.log("Message from Unity: " + message);
-      alert(message)
+    unityContext.on("GameOver", function (userName, score) {
+      alert("GameOver in web"+ userName)
+      alert("GameOver in web" + score)
+      // setIsGameOver(true);
+      // setUserName(userName);
+      // setScore(score);
     });
-    unityContext.on("myMethodInt", (message: number) => {
-      console.log("Message myMethodInt: " + message);
-      alert(message)
-    });
-    
+    console.log("unityContext",unityContext )
   }, [unityContext]);
 
-  useEffect(function () {
-    if(progression >= 1) {
-      console.log("loaded")
-
-      unityContext.on("myMethod", (message: string) => {
-        console.log("Message from Unity: " + message);
-        alert(message)
-      });
-      unityContext.on("myMethodInt", (message: number) => {
-        console.log("Message myMethodInt: " + message);
-        alert(message)
-      });
-    }
-  }, [progression]);
+  useEffect(() => {
+    addEventListener("GameOver", () => {
+      alert("game over in")
+    })
+  }, [addEventListener])
 
 
    useEffect(() => {
@@ -59,11 +49,12 @@ const UnityComponent = ({currentGame, message}: PropTypes) => {
   return (
     <div>
        
-            {progression < 1 && <p>Loading Game {currentGame.id}... {Math.round(progression * 100)}%</p>}
+           
           
           <Unity unityContext={unityContext} style={{
               width: '100vw', height: '100vh'
           }}/>
+           {progression < 1 && <p>Loading Game {currentGame.id}... {Math.round(progression * 100)}%</p>}
         
         {/* <div className='overlay'>
              

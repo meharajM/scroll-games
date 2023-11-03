@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import './styles.css';
 import { Game, Message } from '../../types';
@@ -43,19 +43,19 @@ const GameContainer = () => {
     setMessage({controller: 'GameController', method: "SpawnEnemies", value: 10})
   }
 
+  const renderGame = useCallback(() => {
+    return currentGame && 
+      <>
+          <UnityComponent currentGame={currentGame} key={currentGame.id} message={message} />
+      </>       
+  }, [currentGame && currentGame.id])
   return (
     
       <div className={isMobileDevice ? "mobile-view" : "desktop-view"}>
          <Overlay sendMessage={sendMessage} loadNext={loadNext} loadPrev={loadPrev}>
         {!gamesMeta.length && !currentGame && <div>Loading info....</div>}
-        {currentGame && 
-        <>
-        
-            <UnityComponent currentGame={currentGame} key={currentGame.id} message={message} />
-
-        </>
-        
-        }</Overlay>
+        {renderGame()}
+        </Overlay>
       </div>
    
   );

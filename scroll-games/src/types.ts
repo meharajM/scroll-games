@@ -7,7 +7,7 @@ export interface Game {
   
   // Add other properties as needed
 }
-export type message = {
+export type Message = {
   controller: string,
   method: string,
   value: string | number;

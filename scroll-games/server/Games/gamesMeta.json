@@ -1,5 +1,13 @@
 [
   {
+    "id": "game9",
+    "name": "Game 9",
+    "unityLoaderJsPath": "/Games/Runnerv9/Build/Runnerv9.loader.js",
+    "dataUrl": "/Games/Runnerv9/Build/Runnerv9.data",
+    "frameworkUrl": "/Games/Runnerv9/Build/Runnerv9.framework.js",
+    "codeUrl": "/Games/Runnerv9/Build/Runnerv9.wasm"
+  },   
+  {
     "id": "game8",
     "name": "Game 8",
     "unityLoaderJsPath": "/Games/Runnerv8/Build/Runnerv8.loader.js",
