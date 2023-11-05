@@ -1,0 +1,60 @@
+[
+
+  {
+    "id": "game10",
+    "name": "Game 10",
+    "unityLoaderJsPath": "/Games/Runnerv10/Build/Runnerv10.loader.js",
+    "dataUrl": "/Games/Runnerv10/Build/Runnerv10.data",
+    "frameworkUrl": "/Games/Runnerv10/Build/Runnerv10.framework.js",
+    "codeUrl": "/Games/Runnerv10/Build/Runnerv10.wasm"
+  }, 
+  {
+    "id": "game9",
+    "name": "Game 9",
+    "unityLoaderJsPath": "/Games/Runnerv9/Build/Runnerv9.loader.js",
+    "dataUrl": "/Games/Runnerv9/Build/Runnerv9.data",
+    "frameworkUrl": "/Games/Runnerv9/Build/Runnerv9.framework.js",
+    "codeUrl": "/Games/Runnerv9/Build/Runnerv9.wasm"
+  },   
+  {
+    "id": "game8",
+    "name": "Game 8",
+    "unityLoaderJsPath": "/Games/Runnerv8/Build/Runnerv8.loader.js",
+    "dataUrl": "/Games/Runnerv8/Build/Runnerv8.data",
+    "frameworkUrl": "/Games/Runnerv8/Build/Runnerv8.framework.js",
+    "codeUrl": "/Games/Runnerv8/Build/Runnerv8.wasm"
+  },   
+  {
+    "id": "game7",
+    "name": "Game 7",
+    "unityLoaderJsPath": "/Games/Runnerv7/Build/Runnerv7.loader.js",
+    "dataUrl": "/Games/Runnerv7/Build/Runnerv7.data",
+    "frameworkUrl": "/Games/Runnerv7/Build/Runnerv7.framework.js",
+    "codeUrl": "/Games/Runnerv7/Build/Runnerv7.wasm"
+  },   
+  {
+    "id": "game1",
+    "name": "Game 1",
+    "unityLoaderJsPath": "/Games/Runnerv6/Build/Runnerv6.loader.js",
+    "dataUrl": "/Games/Runnerv6/Build/Runnerv6.data",
+    "frameworkUrl": "/Games/Runnerv6/Build/Runnerv6.framework.js",
+    "codeUrl": "/Games/Runnerv6/Build/Runnerv6.wasm"
+  },     
+    {
+      "id": "game2",
+      "name": "Game 2",
+      "unityLoaderJsPath": "/Games/Runnerv5/Build/Runnerv5.loader.js",
+      "dataUrl": "/Games/Runnerv5/Build/Runnerv5.data",
+      "frameworkUrl": "/Games/Runnerv5/Build/Runnerv5.framework.js",
+      "codeUrl": "/Games/Runnerv5/Build/Runnerv5.wasm"
+    },
+    {
+      "id": "game3",
+      "name": "Game 3",
+      "unityLoaderJsPath": "/Games/1/Build/WebTest4.loader.js",
+      "dataUrl": "/Games/1/Build/WebTest4.data",
+      "frameworkUrl": "/Games/1/Build/WebTest4.framework.js",
+      "codeUrl": "/Games/1/Build/WebTest4.wasm"
+    }
+  ]
+  

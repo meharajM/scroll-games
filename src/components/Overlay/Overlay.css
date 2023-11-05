@@ -1,0 +1,52 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+  }
+  
+  .content {
+    flex-grow: 1;
+  }
+
+  @keyframes wave {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  .actions {
+    position: absolute;
+    right: 8px;
+    bottom: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100vh;
+    width: 40px;
+    transition: background-color 0.5s ease;
+  }
+
+  .actions.Up, .actions.Down {
+    /* background: linear-gradient(45deg, red, blue); */
+    background-size: 200% 200%;
+    animation: wave 5s ease infinite;
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  .action-button {
+    margin-bottom: 10px;
+    padding: 8px;
+  }
+  

@@ -1,0 +1,26 @@
+.mobile-view {
+    /* Styles for mobile view go here */
+    width: 100vw;
+    height: 100vh;
+    background-color: gray;
+    margin: 0;
+    position: absolute;
+    top: 0;
+  }
+  
+  .desktop-view {
+    /* Styles for desktop view go here */
+    width: 375px; 
+    height: 667px;
+    background-color: gray;
+    position: absolute;
+    top: 0;
+  }
+
+  .overlay {
+    position: sticky;
+    top: 0;
+    left: 0;
+    /* height: 100px; */
+  }
+  
