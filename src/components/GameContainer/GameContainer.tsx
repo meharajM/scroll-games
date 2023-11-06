@@ -40,7 +40,8 @@ const GameContainer = () => {
   }, [currentIndex, gamesMeta]);
 
   const sendMessage = () => {
-    setMessage({controller: 'GameController', method: "SpawnEnemies", value: 10})
+    console.log("setMessage", setMessage)
+    setMessage({controller: 'GameController', method: "OnTapButtonClick"})
   }
 
   const renderGame = useCallback(() => {
@@ -48,7 +49,7 @@ const GameContainer = () => {
       <>
           <UnityComponent currentGame={currentGame} key={currentGame.id} message={message} />
       </>       
-  }, [currentGame && currentGame.id])
+  }, [currentGame && currentGame.id, message])
   return (
     
       <div className={isMobileDevice ? "mobile-view" : "desktop-view"}>

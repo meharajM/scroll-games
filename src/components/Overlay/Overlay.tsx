@@ -30,13 +30,13 @@ const Overlay: React.FC<OverlayProps> = ({ children, sendMessage, loadPrev, load
     <div className="overlay" >
       <div className="content">{children}</div>
       <div className={`actions ${bgColorClass}`} {...handlers} >
-        <button className="action-button">
-        <FiShare2 size={24} />
+        <button title='share' className="action-button">
+          <FiShare2 size={24} />
         </button>
-        <button className="action-button">
+        <button title='like' className="action-button">
           <FiThumbsUp size={24}/>
         </button>
-        <button className="action-button">
+        <button title='dislike' className="action-button">
           <FiThumbsDown size={24}/>
         </button>
         <button onClick={sendMessage} className='action-button'>

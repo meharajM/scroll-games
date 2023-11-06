@@ -10,5 +10,5 @@ export interface Game {
 export type Message = {
   controller: string,
   method: string,
-  value: string | number;
+  value?: string | number;
 }

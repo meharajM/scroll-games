@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import Unity, {  UnityContext,  } from 'react-unity-webgl';
+import Unity, {  UnityContext } from 'react-unity-webgl';
 import { Game, Message } from '../types';
 import { formatUrl } from '../apiRoutes';
 
@@ -23,7 +23,7 @@ const UnityComponent = ({currentGame, message}: PropTypes) => {
       setProgression(progression);
     });
     unityContext.on("ScoreUpdate", function ( score) { //ScoreUpdate ,OnGameOver,OnGameWin
-      alert("ScoreUpdate"+ score)
+      console.log("ScoreUpdate"+ score)
     });
     unityContext.on("OnGameWin", function ( message) { //ScoreUpdate ,OnGameOver,OnGameWin
       alert("OnGameWin"+ message)
@@ -41,7 +41,7 @@ const UnityComponent = ({currentGame, message}: PropTypes) => {
     })
   }, [addEventListener])
 
-
+  console.log("message", message)
    useEffect(() => {
     console.log("sending message")
     if(message) {
@@ -51,19 +51,10 @@ const UnityComponent = ({currentGame, message}: PropTypes) => {
 
   return (
     <div>
-       
-           
-          
           <Unity unityContext={unityContext} style={{
               width: '100vw', height: '100vh'
           }}/>
            {progression < 1 && <p>Loading Game {currentGame.id}... {Math.round(progression * 100)}%</p>}
-        
-        {/* <div className='overlay'>
-             
-            </div> */}
-           
-            
     </div>
    
        
