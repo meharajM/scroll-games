@@ -20,9 +20,11 @@ const Overlay: React.FC<OverlayProps> = ({ children, sendMessage, loadPrev, load
     },
     onSwipedUp: () => {
       loadNext();
+      setBgColor('')
     },
     onSwipedDown: () => {
       loadPrev();
+      setBgColor('')
     }, 
     trackMouse: true
 })
@@ -30,7 +32,7 @@ const Overlay: React.FC<OverlayProps> = ({ children, sendMessage, loadPrev, load
     <div className="overlay" >
       <div className="content">{children}</div>
       <div className={`actions ${bgColorClass}`} {...handlers} >
-        <button title='share' className="action-button">
+        {/*<button title='share' className="action-button">
           <FiShare2 size={24} />
         </button>
         <button title='like' className="action-button">
@@ -39,10 +41,10 @@ const Overlay: React.FC<OverlayProps> = ({ children, sendMessage, loadPrev, load
         <button title='dislike' className="action-button">
           <FiThumbsDown size={24}/>
         </button>
-        <button onClick={sendMessage} className='action-button'>
+         <button onClick={sendMessage} className='action-button'>
           <FiSend size={24}/>
           Send Message
-        </button>
+        </button> */}
         <button className='action-button' onClick={loadPrev}>
           <FiArrowUp size={24}/>
         </button>

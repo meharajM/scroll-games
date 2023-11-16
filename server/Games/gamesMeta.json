@@ -1,5 +1,20 @@
 [
-
+  {
+    "id": "game12",
+    "name": "Game 12",
+    "unityLoaderJsPath": "/Games/Game3/Build/Game3.loader.js",
+    "dataUrl": "/Games/Game3/Build/Game3.data",
+    "frameworkUrl": "/Games/Game3/Build/Game3.framework.js",
+    "codeUrl": "/Games/Game3/Build/Game3.wasm"
+  }, 
+  {
+    "id": "game11",
+    "name": "Game 11",
+    "unityLoaderJsPath": "/Games/Game1/Build/Game1.loader.js",
+    "dataUrl": "/Games/Game1/Build/Game1.data",
+    "frameworkUrl": "/Games/Game1/Build/Game1.framework.js",
+    "codeUrl": "/Games/Game1/Build/Game1.wasm"
+  }, 
   {
     "id": "game10",
     "name": "Game 10",
