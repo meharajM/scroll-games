@@ -1,4 +1,3 @@
-import React from 'react';
 import './GameLoader.css'; // Importing the CSS file
 
 const GameLoader = () => {

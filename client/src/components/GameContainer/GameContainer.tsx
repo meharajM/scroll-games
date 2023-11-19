@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import './styles.css';
 import { Game, Message } from '../../types';
