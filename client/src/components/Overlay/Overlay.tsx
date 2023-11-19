@@ -1,7 +1,7 @@
-import React, { ReactNode, useState } from 'react';
 import { useSwipeable } from 'react-swipeable';
 import { FiShare2, FiThumbsUp, FiThumbsDown, FiSend, FiArrowUp, FiArrowDown } from 'react-icons/fi';
 import './Overlay.css';
+import { ReactNode, useState } from 'react';
 
 interface OverlayProps {
   children: ReactNode;
@@ -32,7 +32,7 @@ const Overlay: React.FC<OverlayProps> = ({ children, sendMessage, loadPrev, load
     <div className="overlay" >
       <div className="content">{children}</div>
       <div className={`actions ${bgColorClass}`} {...handlers} >
-        {/*<button title='share' className="action-button">
+        <button title='share' className="action-button">
           <FiShare2 size={24} />
         </button>
         <button title='like' className="action-button">
@@ -41,14 +41,13 @@ const Overlay: React.FC<OverlayProps> = ({ children, sendMessage, loadPrev, load
         <button title='dislike' className="action-button">
           <FiThumbsDown size={24}/>
         </button>
-         <button onClick={sendMessage} className='action-button'>
+         <button title="send" onClick={sendMessage} className='action-button'>
           <FiSend size={24}/>
-          Send Message
-        </button> */}
-        <button className='action-button' onClick={loadPrev}>
+        </button>
+        <button title="last" className='action-button' onClick={loadPrev}>
           <FiArrowUp size={24}/>
         </button>
-        <button className='action-button' onClick={loadNext}>
+        <button title="next" className='action-button' onClick={loadNext}>
           <FiArrowDown size={24}/>
         </button>
 
