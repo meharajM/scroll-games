@@ -13,7 +13,7 @@ app.use(cors());
 // Serve gamesMeta.json file
 app.get('/api/gamesMeta', (req, res) => {
     console.log("inside gamesMeta ")
-    res.sendFile(path.join(__dirname, '../Games/gamesMeta.json'));
+    res.sendFile(path.join(__dirname, './Games/gamesMeta.json'));
 });
 app.use('/Games', (req, res) => {
     console.log(req.url, "inside Games")
