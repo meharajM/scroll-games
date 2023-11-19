@@ -1,5 +1,5 @@
 import { Game } from '../../types';
-import './GameLoader.css'; // Importing the CSS file
+import './gameLoader.css'; // Importing the CSS file
 type GameLoaderPropType = {
   progression: number;
   currentGame: Game;
