@@ -30,4 +30,4 @@ if (!process.env.VERCEL) {
 }
 
 // Export your app
-module.exports = app;
+export default app;
