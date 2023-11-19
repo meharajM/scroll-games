@@ -1,12 +1,14 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import Unity, {  UnityContext } from 'react-unity-webgl';
+import Unity, { UnityContext } from 'react-unity-webgl';
 import { Game, Message } from '../types';
 import { formatUrl } from '../apiRoutes';
+import GameLoader from './GameLoader/GameLoader';
 
 type PropTypes = {
     currentGame: Game;
     message: Message | null;
 }
+
 const UnityComponent = ({currentGame, message}: PropTypes) => {
   const [progression, setProgression] = useState(0);
   const config = {
@@ -50,14 +52,14 @@ const UnityComponent = ({currentGame, message}: PropTypes) => {
   }, [message])
 
   return (
-    <div>
-          <Unity unityContext={unityContext} style={{
-              width: '100vw', height: '100vh'
-          }}/>
-           {progression < 1 && <p>Loading Game {currentGame.id}... {Math.round(progression * 100)}%</p>}
+    <div style={{position: 'relative'}}>
+      <Unity unityContext={unityContext} style={{
+          width: '100vw', height: '100vh'
+      }}/>
+      {progression < 1 && 
+        <GameLoader progression={progression} currentGame={currentGame} />
+      }
     </div>
-   
-       
   )
 }
 

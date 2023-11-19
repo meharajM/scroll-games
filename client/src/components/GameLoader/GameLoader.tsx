@@ -1,9 +1,19 @@
+import { Game } from '../../types';
 import './GameLoader.css'; // Importing the CSS file
-
-const GameLoader = () => {
+type GameLoaderPropType = {
+  progression: number;
+  currentGame: Game;
+}
+const GameLoader = ({progression, currentGame}: GameLoaderPropType ) => {
   return (
     <div className="mobile-view">
-      {/* Your mobile view content goes here */}
+      <div style={{
+          position: 'absolute', top: '0', left: '0', width: '100%', height: '100%', 
+          display: 'flex', justifyContent: 'center', alignItems: 'center', 
+          backgroundColor: 'rgba(0, 0, 0, 0.5)'
+        }}>
+          <p style={{color: 'white'}}>Loading Game {currentGame.id}... {Math.round(progression * 100)}%</p>
+        </div>
     </div>
   );
 };

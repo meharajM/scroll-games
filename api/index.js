@@ -15,7 +15,7 @@ app.get('/api/gamesMeta', (req, res) => {
     console.log("inside gamesMeta ")
     res.sendFile(path.join(__dirname, './Games/gamesMeta.json'));
 });
-app.use('/Games', (req, res) => {
+app.use('/api/Games', (req, res) => {
     console.log(req.url, "inside Games")
     const gameDirectory = path.join(__dirname, '/Games', req.url);
     res.sendFile(gameDirectory);
