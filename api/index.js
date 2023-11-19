@@ -1,4 +1,3 @@
-
 import express from 'express';
 import cors from 'cors';
 import fetch from 'node-fetch';
@@ -7,7 +6,6 @@ import path, {dirname} from 'path';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const app = express();
-const port = process.env.PORT || 3000;
 
 // Enable CORS for all routes
 app.use(cors());
@@ -21,9 +19,15 @@ app.use('/Games', (req, res) => {
     console.log(req.url, "inside Games")
     const gameDirectory = path.join(__dirname, '/Games', req.url);
     res.sendFile(gameDirectory);
-  });
-  
-
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
 });
+
+// Check if the code is running on Vercel
+if (!process.env.VERCEL) {
+  const port = process.env.PORT || 3000;
+  app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+  });
+}
+
+// Export your app
+module.exports = app;
