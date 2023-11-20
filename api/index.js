@@ -1,11 +1,11 @@
 import express from 'express';
 import cors from 'cors';
-import { S3Client, GetObjectCommand } from "@aws-sdk/client-s3";
+import { S3Client, GetObjectCommand, ListObjectsV2Command } from "@aws-sdk/client-s3";
+import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import { Readable } from 'stream';
 import {fileURLToPath} from 'url';
 import path, {dirname} from 'path';
 import dotenv from 'dotenv';
-
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -14,8 +14,6 @@ const app = express();
 dotenv.config();
 // Enable CORS for all routes
 app.use(cors());
-console.log("process.env.AWS_ACCESS_KEY_ID,", process.env.AWS_ACCESS_KEY_ID)
-console.log("process.env.AWS_SECRET_ACCESS_KEY", process.env.AWS_SECRET_ACCESS_KEY)
 // Configure AWS SDK
 const s3 = new S3Client({
   region: 'ap-south-1',
@@ -41,12 +39,61 @@ app.get('/api/gamesMeta', async (req, res) => {
   }
 });
 
+app.get('/api/getSignedUrls/:gameName', async (req, res) => {
+  const gameName = req.params.gameName;
+  
+  const listParams = {
+    Bucket: 'scroll-gmaes',
+    Prefix: 'games-builds/Games/' + gameName
+  };
+
+  try {
+    const data = await s3.send(new ListObjectsV2Command(listParams));
+    const files = data.Contents.map(file => file.Key);
+
+    const response = {
+      unityLoaderJsPath: '',
+      dataUrl: '',
+      frameworkUrl: '',
+      codeUrl: ''
+    };
+
+    for (const file of files) {
+      const getParams = {
+        Bucket: 'scroll-gmaes',
+        Key: file,
+        Expires: 60 * 60, // URL expiry time in seconds
+      };
+
+      const command = new GetObjectCommand(getParams);
+      const url = await getSignedUrl(s3, command, { expiresIn: getParams.Expires });
+
+      
+      console.log("file", file)
+      if (file.endsWith('Game3.data')) {
+        response.dataUrl = url;
+      } else if (file.endsWith('Game3.framework.js')) {
+        response.frameworkUrl = url;
+      } else if (file.endsWith('Game3.loader.js')) {
+        response.unityLoaderJsPath = url;
+      } else if (file.endsWith('Game3.wasm')) {
+        response.codeUrl = url;
+      }
+    }
+
+    res.json({ gameName, ...response });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 app.use('/api/Games', async (req, res) => {
   console.log(req.url, "inside Games")
   
   const params = {
     Bucket: 'scroll-gmaes',
-    Key: 'games-builds/Games' + req.url
+    Key: 'games-builds/Games' + req.url,
+    Expires: 60 * 30
   };
 
   // Set the correct MIME type for Unity WebGL files
@@ -59,8 +106,10 @@ app.use('/api/Games', async (req, res) => {
   }
 
   try {
-    const data = await s3.send(new GetObjectCommand(params));
-    data.Body.pipe(res);
+    const command = new GetObjectCommand(params);
+    const url = await getSignedUrl(s3, command, {expiresIn: params.Expires})
+    console.log("url", url)
+    res.json({url})
   } catch (err) {
     console.log(err);
   }

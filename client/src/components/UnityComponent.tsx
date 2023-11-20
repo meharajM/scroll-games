@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import Unity, { UnityContext } from 'react-unity-webgl';
 import { Game, Message } from '../types';
-import { formatUrl } from '../apiRoutes';
+import { formatUrl, getSignedUrls } from '../apiRoutes';
 import GameLoader from './GameLoader/GameLoader';
 
 type PropTypes = {
@@ -11,14 +11,29 @@ type PropTypes = {
 
 const UnityComponent = ({currentGame, message}: PropTypes) => {
   const [progression, setProgression] = useState(0);
-  const config = {
-    loaderUrl: formatUrl(currentGame?.unityLoaderJsPath?? ""),
-    dataUrl: formatUrl(currentGame?.dataUrl?? ""),
-    frameworkUrl: formatUrl(currentGame?.frameworkUrl?? ""), 
-    codeUrl: formatUrl(currentGame?.codeUrl?? ""),
-  }
+  const [buildFiles, setBuildFiles] = useState<Game | null>(null);
+  useEffect(() => {
+    const gameId = currentGame.id;
+    const getSignedUrlForGame = getSignedUrls(gameId)
+    fetch(getSignedUrlForGame)
+      .then(response => {
+        return response.json();
+      })
+      .then((data: Game) => {
+        console.log(data)
+        setBuildFiles(data)
+      })
+      .catch((error: Error) => console.error(error));
+  }, [currentGame.id])
+
+  const config = useMemo(() => ({
+    loaderUrl: formatUrl(buildFiles?.unityLoaderJsPath?? ""),
+    dataUrl: formatUrl(buildFiles?.dataUrl?? ""),
+    frameworkUrl: formatUrl(buildFiles?.frameworkUrl?? ""), 
+    codeUrl: formatUrl(buildFiles?.codeUrl?? ""),
+  }), [buildFiles])
   
-  const unityContext = useMemo(() => new UnityContext(config), [currentGame.id]);
+  const unityContext = useMemo(() => new UnityContext(config), [config]);
 
   useEffect(function () {
     unityContext.on("progress", function (progression) {
@@ -53,9 +68,9 @@ const UnityComponent = ({currentGame, message}: PropTypes) => {
 
   return (
     <div style={{position: 'relative'}}>
-      <Unity unityContext={unityContext} style={{
+      {buildFiles && <Unity unityContext={unityContext} style={{
           width: '100vw', height: '100vh'
-      }}/>
+      }}/>}
       {progression < 1 && 
         <GameLoader progression={progression} currentGame={currentGame} />
       }

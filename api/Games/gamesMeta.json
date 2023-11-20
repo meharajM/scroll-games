@@ -1,6 +1,6 @@
 [
   {
-    "id": "game12",
+    "id": "Game3",
     "name": "Game 12",
     "unityLoaderJsPath": "/api/Games/Game3/Build/Game3.loader.js",
     "dataUrl": "/api/Games/Game3/Build/Game3.data",
@@ -8,7 +8,7 @@
     "codeUrl": "/api/Games/Game3/Build/Game3.wasm"
   }, 
   {
-    "id": "game11",
+    "id": "Game1",
     "name": "Game 11",
     "unityLoaderJsPath": "/api/Games/Game1/Build/Game1.loader.js",
     "dataUrl": "/api/Games/Game1/Build/Game1.data",
