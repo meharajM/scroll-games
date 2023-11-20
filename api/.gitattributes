@@ -1,0 +1,4 @@
+Games/gamesMeta.json filter=lfs diff=lfs merge=lfs -text
+Games/1 filter=lfs diff=lfs merge=lfs -text
+Games/Game1 filter=lfs diff=lfs merge=lfs -text
+Games/Game3 filter=lfs diff=lfs merge=lfs -text
