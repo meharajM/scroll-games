@@ -70,13 +70,13 @@ app.get('/api/getSignedUrls/:gameName', async (req, res) => {
 
       
       console.log("file", file)
-      if (file.endsWith('Game3.data')) {
+      if (file.endsWith('.data')) {
         response.dataUrl = url;
-      } else if (file.endsWith('Game3.framework.js')) {
+      } else if (file.endsWith('.framework.js')) {
         response.frameworkUrl = url;
-      } else if (file.endsWith('Game3.loader.js')) {
+      } else if (file.endsWith('.loader.js')) {
         response.unityLoaderJsPath = url;
-      } else if (file.endsWith('Game3.wasm')) {
+      } else if (file.endsWith('.wasm')) {
         response.codeUrl = url;
       }
     }
