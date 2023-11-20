@@ -23,21 +23,26 @@ const s3 = new S3Client({
   }
 });
 
-app.get('/api/gamesMeta', async (req, res) => {
+app.get('/api/gamesMeta', (req, res) => {
   console.log("inside gamesMeta ")
-  
-  const params = {
-    Bucket: 'scroll-gmaes',
-    Key: 'games-builds/Games/gamesMeta.json'
-  };
-
-  try {
-    const data = await s3.send(new GetObjectCommand(params));
-    data.Body.pipe(res)
-  } catch (err) {
-    console.log(err);
-  }
+  res.sendFile(path.join(__dirname, './Games/gamesMeta.json'));
 });
+
+// app.get('/api/gamesMeta', async (req, res) => {
+//   console.log("inside gamesMeta ")
+  
+//   const params = {
+//     Bucket: 'scroll-gmaes',
+//     Key: 'games-builds/Games/gamesMeta.json'
+//   };
+
+//   try {
+//     const data = await s3.send(new GetObjectCommand(params));
+//     data.Body.pipe(res)
+//   } catch (err) {
+//     console.log(err);
+//   }
+// });
 
 app.get('/api/getSignedUrls/:gameName', async (req, res) => {
   const gameName = req.params.gameName;
