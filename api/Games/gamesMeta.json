@@ -14,6 +14,14 @@
     "dataUrl": "/api/Games/Game1/Build/Game1.data",
     "frameworkUrl": "/api/Games/Game1/Build/Game1.framework.js",
     "codeUrl": "/api/Games/Game1/Build/Game1.wasm"
+  },
+  {
+    "id": "Game4",
+    "name": "Game 4",
+    "unityLoaderJsPath": "/api/Games/Game4/Build/carGame1.loader.js",
+    "dataUrl": "/api/Games/Game4/Build/carGame1.data",
+    "frameworkUrl": "/api/Games/Game4/Build/carGame1.framework.js",
+    "codeUrl": "/api/Games/Game4/Build/carGame1.wasm"
   }
  
   ]
