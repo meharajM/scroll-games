@@ -5,6 +5,7 @@ type GameLoaderPropType = {
   currentGame: Game;
 }
 const GameLoader = ({progression, currentGame}: GameLoaderPropType ) => {
+  console.log(currentGame, "currentGame")
   return (
     <div className="mobile-view">
       <div style={{
@@ -12,7 +13,7 @@ const GameLoader = ({progression, currentGame}: GameLoaderPropType ) => {
           display: 'flex', justifyContent: 'center', alignItems: 'center', 
           backgroundColor: 'rgba(0, 0, 0, 0.5)'
         }}>
-          <p style={{color: 'white'}}>Loading Game {currentGame.id}... {Math.round(progression * 100)}%</p>
+          <p style={{color: 'white'}}>Loading Game... {Math.round(progression * 100)}%</p>
         </div>
     </div>
   );
