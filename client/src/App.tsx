@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import GameContainer from './components/GameContainer/GameContainer'
-import UserAuth, {auth} from './components/UserAuth/UserAuth';
 import './App.css';
+import UserAuth, { auth } from './components/UserAuth/UserAuth';
 const App = () => {
   const [showLoginScreen, setShowLoginScreen] = useState(false);
   useEffect(() => {
