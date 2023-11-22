@@ -5,8 +5,10 @@ import { Game, Message } from '../../types';
 import { getGamesMetaUrl } from '../../apiRoutes';
 import UnityComponent from '../UnityComponent';
 import Overlay from '../Overlay/Overlay';
-
-const GameContainer = () => {
+type GamrContainerProps = {
+  onShowLogin: () => void;
+}
+const GameContainer = ({onShowLogin}: GamrContainerProps) => {
   const [gamesMeta, setGamesMeta] = useState<Game[]>([]);
   const [currentGame, setCurrentGame] = useState<Game | null>(null);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
@@ -36,6 +38,9 @@ const GameContainer = () => {
     setCurrentIndex(prevIndex => (prevIndex - 1 + gamesMeta.length) % gamesMeta.length)
   }
   useEffect(() => {
+    if(currentIndex === 2) {
+      onShowLogin();
+    }
     setCurrentGame(gamesMeta[currentIndex]);
   }, [currentIndex, gamesMeta]);
 
