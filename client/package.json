@@ -1,7 +1,7 @@
 {
   "name": "scroll-games",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Mobile-first Scroll Games web player and PWA.",
   "license": "MIT",
   "homepage": "https://scroll-games.vercel.app/",
