@@ -1,21 +1,29 @@
 {
   "name": "scroll-games-server",
   "version": "1.0.0",
-  "description": "",
+  "description": "Catalog, moderation, and managed-trial API for Scroll Games.",
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "test"
+    "start": "node index.js",
+    "test": "node ../scripts/validate-games.mjs Games/gamesMeta.json && node --check index.js && node --test index.test.js"
   },
-  "author": "meharaj",
-  "license": "ISC",
+  "author": "Scroll Games contributors",
+  "license": "MIT",
+  "homepage": "https://scroll-games.vercel.app/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/meharajM/scroll-games.git",
+    "directory": "api"
+  },
+  "engines": {
+    "node": ">=20"
+  },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.454.0",
     "@aws-sdk/s3-request-presigner": "^3.454.0",
-    "aws-sdk": "^2.1499.0",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
-    "express": "^4.18.2",
-    "node-fetch": "^3.3.2"
+    "express": "^4.18.2"
   }
 }

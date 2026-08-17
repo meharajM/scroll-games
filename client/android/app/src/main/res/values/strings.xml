@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Scroll Games</string>
+    <string name="title_activity_main">Scroll Games</string>
+    <string name="package_name">com.scrollgames.app</string>
+    <string name="custom_url_scheme">com.scrollgames.app</string>
+</resources>

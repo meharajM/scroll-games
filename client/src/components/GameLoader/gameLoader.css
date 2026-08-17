@@ -1,0 +1,18 @@
+.unity-player {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.game-loader,
+.game-error {
+  box-sizing: border-box;
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  color: white;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.72);
+}

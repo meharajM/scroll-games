@@ -1,0 +1,39 @@
+{
+  "name": "scroll-games",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Human-curated, open-source discovery feed for instantly playable indie game demos.",
+  "license": "MIT",
+  "homepage": "https://scroll-games.vercel.app/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/meharajM/scroll-games.git"
+  },
+  "bugs": {
+    "url": "https://github.com/meharajM/scroll-games/issues"
+  },
+  "keywords": [
+    "indie-games",
+    "game-discovery",
+    "html5-games",
+    "webgl-games",
+    "game-demos",
+    "open-source"
+  ],
+  "type": "module",
+  "scripts": {
+    "build": "npm --prefix client run build",
+    "lint": "npm --prefix client run lint",
+    "test": "node scripts/validate-games.mjs && node --test scripts/check-game-urls.test.mjs scripts/validate-game-submission.test.mjs && npm --prefix api test",
+    "check": "npm test && npm run lint && npm run build",
+    "test:e2e": "npm --prefix client ci && playwright test"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.62.1",
+    "@vitejs/plugin-react": "4.1.0",
+    "vite": "4.5.14"
+  }
+}

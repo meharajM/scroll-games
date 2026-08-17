@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Private security report
+    url: mailto:meharaj137@gmail.com
+    about: Report vulnerabilities, exposed credentials, private data, or active abuse privately.
+  - name: Player support
+    url: https://scroll-games.vercel.app/support.html
+    about: Get help with the web app or a listed game demo.

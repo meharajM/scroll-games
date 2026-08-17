@@ -2,13 +2,58 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <link rel="apple-touch-icon" href="/vite.svg">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React + TS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#f05a28" />
+    <meta name="description" content="Play human-curated indie game demos instantly, then follow, wishlist, or download the games you love. Open source and built for mobile." />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="application-name" content="Scroll Games" />
+    <meta name="author" content="Scroll Games contributors" />
+    <link rel="canonical" href="https://scroll-games.vercel.app/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Scroll Games" />
+    <meta property="og:title" content="Scroll Games — Play indie games before you download" />
+    <meta property="og:description" content="A human-curated, open-source feed of instantly playable indie game demos." />
+    <meta property="og:url" content="https://scroll-games.vercel.app/" />
+    <meta property="og:image" content="https://scroll-games.vercel.app/og-card.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Scroll Games — Play indie games before you download" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Scroll Games — Play indie games before you download" />
+    <meta name="twitter:description" content="A human-curated, open-source feed of instantly playable indie game demos." />
+    <meta name="twitter:image" content="https://scroll-games.vercel.app/og-card.png" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: blob:; frame-src https:; script-src 'self' 'unsafe-eval' blob: https://scroll-gmaes.s3.ap-south-1.amazonaws.com; style-src 'self' 'unsafe-inline'; img-src 'self' https: data: blob:; connect-src 'self' blob: https://scroll-games.vercel.app https://scroll-gmaes.s3.ap-south-1.amazonaws.com; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'none'" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Scroll Games" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="icon" type="image/svg+xml" href="/icons/scroll-games.svg" />
+    <title>Scroll Games — Play indie game demos before you download</title>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Scroll Games",
+        "url": "https://scroll-games.vercel.app/",
+        "description": "A human-curated, open-source feed of instantly playable indie game demos.",
+        "applicationCategory": "GameApplication",
+        "operatingSystem": "Any",
+        "isAccessibleForFree": true,
+        "license": "https://github.com/meharajM/scroll-games/blob/main/LICENSE",
+        "codeRepository": "https://github.com/meharajM/scroll-games"
+      }
+    </script>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <main>
+        <p>Scroll Games</p>
+        <h1>Play indie games before you download.</h1>
+        <p>Discover human-curated, touch-friendly indie game demos that run instantly in your browser.</p>
+        <p><a href="/about.html">Learn about Scroll Games</a> · <a href="/developers.html">Publish an indie game demo</a></p>
+      </main>
+    </div>
+    <noscript>Scroll Games needs JavaScript to run playable game demos. Read the <a href="/about.html">project overview</a> or visit the <a href="https://github.com/meharajM/scroll-games">open-source repository</a>.</noscript>
     <script type="module" src="/src/main.tsx"></script>
-      </body>
+  </body>
 </html>

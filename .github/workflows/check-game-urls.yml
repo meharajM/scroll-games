@@ -1,0 +1,38 @@
+name: Check hosted game URLs
+
+on:
+  pull_request_target:
+    paths:
+      - api/Games/gamesMeta.json
+      - scripts/check-game-urls.mjs
+      - scripts/check-game-urls.test.mjs
+      - .github/workflows/check-game-urls.yml
+  schedule:
+    - cron: '23 4 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  preflight:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out trusted checker
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event_name == 'pull_request_target' && github.event.pull_request.base.sha || 'main' }}
+          path: trusted
+      - name: Check out pull-request catalog as data
+        if: github.event_name == 'pull_request_target'
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          sparse-checkout: api/Games/gamesMeta.json
+          path: candidate
+      - name: Run trusted unit tests
+        working-directory: trusted
+        run: node --test scripts/check-game-urls.test.mjs
+      - name: Preflight hosted-page URLs
+        working-directory: trusted
+        run: node scripts/check-game-urls.mjs ${{ github.event_name == 'pull_request_target' && '../candidate/api/Games/gamesMeta.json' || 'api/Games/gamesMeta.json' }}

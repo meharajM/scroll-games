@@ -1,0 +1,6 @@
+# Publication and supply-chain boundaries require maintainer review.
+/api/Games/gamesMeta.json @meharajM
+/api/Games/games.schema.json @meharajM
+/scripts/check-game-urls.mjs @meharajM
+/scripts/validate-game-submission.mjs @meharajM
+/.github/workflows/ @meharajM

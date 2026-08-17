@@ -1,22 +1,13 @@
-import { Game } from '../../types';
-import './gameLoader.css'; // Importing the CSS file
-type GameLoaderPropType = {
+import './gameLoader.css';
+
+type Props = {
   progression: number;
-  currentGame: Game;
-}
-const GameLoader = ({progression, currentGame}: GameLoaderPropType ) => {
-  console.log(currentGame, "currentGame")
-  return (
-    <div className="mobile-view">
-      <div style={{
-          position: 'absolute', top: '0', left: '0', width: '100%', height: '100%', 
-          display: 'flex', justifyContent: 'center', alignItems: 'center', 
-          backgroundColor: 'rgba(0, 0, 0, 0.5)'
-        }}>
-          <p style={{color: 'white'}}>Loading Game... {Math.round(progression * 100)}%</p>
-        </div>
-    </div>
-  );
 };
+
+const GameLoader = ({ progression }: Props) => (
+  <div className="game-loader" role="status">
+    <p>Loading game… {Math.round(progression * 100)}%</p>
+  </div>
+);
 
 export default GameLoader;

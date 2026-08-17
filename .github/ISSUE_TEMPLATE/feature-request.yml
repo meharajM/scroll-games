@@ -1,0 +1,41 @@
+name: Product proposal
+description: Propose a focused improvement tied to the current validation plan.
+title: "[Proposal] "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: Who has this problem, and what evidence shows it matters now?
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Desired outcome
+      description: Describe the user-visible result without prescribing a large implementation.
+    validations:
+      required: true
+  - type: dropdown
+    id: gate
+    attributes:
+      label: Validation gate
+      description: Which current product gate does this help test or pass?
+      options:
+        - Game supply
+        - Loading reliability or speed
+        - Multi-game engagement
+        - Destination conversion
+        - Developer value
+        - Safety, privacy, or moderation
+        - Accessibility or contributor experience
+    validations:
+      required: true
+  - type: textarea
+    id: smallest-test
+    attributes:
+      label: Smallest useful test
+      description: What is the least work that could validate the proposal?
+    validations:
+      required: true

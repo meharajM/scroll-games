@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title description">
+  <title id="title">Scroll Games — Play indie games before you download</title>
+  <desc id="description">Scroll Games brand card with an orange scrolling path and editorial typography.</desc>
+  <rect width="1200" height="630" fill="#fff1d6"/>
+  <path d="M0 0h84v630H0zM1116 0h84v630h-84z" fill="#f05a28"/>
+  <g transform="translate(132 91)">
+    <rect width="272" height="448" rx="92" fill="#1b1712"/>
+    <path d="M174 89h-61c-34 0-61 27-61 61s27 61 61 61h46c34 0 61 27 61 61s-27 61-61 61H98" fill="none" stroke="#f05a28" stroke-width="34" stroke-linecap="round"/>
+    <path d="m156 61 30 28-30 28M116 305l-30 28 30 28" fill="none" stroke="#fff1d6" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g fill="#1b1712" font-family="Avenir Next, Trebuchet MS, sans-serif">
+    <text x="476" y="170" font-size="30" font-weight="700" letter-spacing="7">SCROLL GAMES</text>
+    <text x="476" y="264" font-size="54" font-weight="800">Play indie games</text>
+    <text x="476" y="332" font-size="54" font-weight="800">before you download.</text>
+    <text x="476" y="421" font-size="27">Human-curated · Instant demos · Open source</text>
+    <text x="476" y="497" fill="#a63b18" font-size="24" font-weight="700">scroll-games.vercel.app</text>
+  </g>
+</svg>

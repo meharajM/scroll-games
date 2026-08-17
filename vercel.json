@@ -1,4 +1,5 @@
 {
+    "$schema": "https://openapi.vercel.sh/vercel.json",
     "version": 2,
     "builds": [
       {
@@ -15,6 +16,33 @@
     ],
     "routes": [
       {
+        "src": "/(.*)",
+        "headers": {
+          "Content-Security-Policy": "default-src 'self' data: blob:; frame-src https:; script-src 'self' 'unsafe-eval' blob: https://scroll-gmaes.s3.ap-south-1.amazonaws.com; style-src 'self' 'unsafe-inline'; img-src 'self' https: data: blob:; connect-src 'self' blob: https://scroll-gmaes.s3.ap-south-1.amazonaws.com; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'none'; frame-ancestors 'none'",
+          "Permissions-Policy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
+          "Referrer-Policy": "strict-origin-when-cross-origin",
+          "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+          "X-Content-Type-Options": "nosniff",
+          "X-Frame-Options": "DENY"
+        },
+        "continue": true
+      },
+      {
+        "src": "/assets/(.*)",
+        "headers": { "Cache-Control": "public, max-age=31536000, immutable" },
+        "continue": true
+      },
+      {
+        "src": "/(sw.js|registerSW.js|manifest.webmanifest)",
+        "headers": { "Cache-Control": "public, max-age=0, must-revalidate" },
+        "continue": true
+      },
+      {
+        "src": "/(robots.txt|sitemap.xml|og-card.png)",
+        "headers": { "Cache-Control": "public, max-age=3600, must-revalidate" },
+        "continue": true
+      },
+      {
         "src": "/api/(.*)",
         "dest": "api/index.js"
       },
@@ -24,4 +52,3 @@
       }
     ]
   }
-  

@@ -1,28 +1,77 @@
-[
-  {
-    "id": "Game3",
-    "name": "Game 12",
-    "unityLoaderJsPath": "/api/Games/Game3/Build/Game3.loader.js",
-    "dataUrl": "/api/Games/Game3/Build/Game3.data",
-    "frameworkUrl": "/api/Games/Game3/Build/Game3.framework.js",
-    "codeUrl": "/api/Games/Game3/Build/Game3.wasm"
-  }, 
-  {
-    "id": "Game1",
-    "name": "Game 11",
-    "unityLoaderJsPath": "/api/Games/Game1/Build/Game1.loader.js",
-    "dataUrl": "/api/Games/Game1/Build/Game1.data",
-    "frameworkUrl": "/api/Games/Game1/Build/Game1.framework.js",
-    "codeUrl": "/api/Games/Game1/Build/Game1.wasm"
-  },
-  {
-    "id": "Game4",
-    "name": "Game 4",
-    "unityLoaderJsPath": "/api/Games/Game4/Build/carGame1.loader.js",
-    "dataUrl": "/api/Games/Game4/Build/carGame1.data",
-    "frameworkUrl": "/api/Games/Game4/Build/carGame1.framework.js",
-    "codeUrl": "/api/Games/Game4/Build/carGame1.wasm"
-  }
- 
+{
+  "schemaVersion": 1,
+  "games": [
+    {
+      "id": "game-12",
+      "name": "Game 12",
+      "description": "Existing Scroll Games Unity WebGL trial.",
+      "version": "1.0.0",
+      "developer": {
+        "name": "Scroll Games",
+        "url": "https://github.com/meharajM/scroll-games"
+      },
+      "destination": {
+        "url": "https://github.com/meharajM/scroll-games",
+        "label": "follow",
+        "platform": "GitHub"
+      },
+      "genres": ["arcade"],
+      "orientation": "portrait",
+      "minimumAge": 4,
+      "estimatedDownloadMb": 24.4,
+      "status": "active",
+      "source": {
+        "type": "managed-unity",
+        "gameId": "Game3"
+      }
+    },
+    {
+      "id": "game-11",
+      "name": "Game 11",
+      "description": "Existing Scroll Games Unity WebGL trial.",
+      "version": "1.0.0",
+      "developer": {
+        "name": "Scroll Games",
+        "url": "https://github.com/meharajM/scroll-games"
+      },
+      "destination": {
+        "url": "https://github.com/meharajM/scroll-games",
+        "label": "follow",
+        "platform": "GitHub"
+      },
+      "genres": ["arcade"],
+      "orientation": "portrait",
+      "minimumAge": 4,
+      "estimatedDownloadMb": 24.4,
+      "status": "active",
+      "source": {
+        "type": "managed-unity",
+        "gameId": "Game1"
+      }
+    },
+    {
+      "id": "game-4",
+      "name": "Game 4",
+      "description": "Existing Scroll Games Unity WebGL car game trial.",
+      "version": "1.0.0",
+      "developer": {
+        "name": "Scroll Games",
+        "url": "https://github.com/meharajM/scroll-games"
+      },
+      "destination": {
+        "url": "https://github.com/meharajM/scroll-games",
+        "label": "follow",
+        "platform": "GitHub"
+      },
+      "genres": ["racing"],
+      "orientation": "portrait",
+      "minimumAge": 4,
+      "estimatedDownloadMb": 36.8,
+      "status": "active",
+      "source": {
+        "type": "managed-unity",
+        "gameId": "Game4"
+      }
+    }
   ]
-  
+}

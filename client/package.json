@@ -1,27 +1,44 @@
 {
   "name": "scroll-games",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
+  "description": "Mobile-first Scroll Games web player and PWA.",
+  "license": "MIT",
+  "homepage": "https://scroll-games.vercel.app/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/meharajM/scroll-games.git",
+    "directory": "client"
+  },
   "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "build:native": "tsc && vite build --mode native",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "native:sync": "npm run build:native && LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8 cap sync",
+    "native:open:ios": "cap open ios",
+    "native:open:android": "cap open android",
+    "native:run:ios": "npm run native:sync && cap run ios",
+    "native:run:android": "npm run native:sync && cap run android",
     "preview": "vite preview"
   },
   "dependencies": {
-    "@types/firebase": "^3.2.1",
-    "firebase": "^10.6.0",
+    "@capacitor/android": "7.6.8",
+    "@capacitor/core": "7.6.8",
+    "@capacitor/ios": "7.6.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.11.0",
-    "react-responsive": "^9.0.2",
     "react-swipeable": "^7.0.1",
-    "react-unity-webgl": "8.8.0",
-    "vite-plugin-pwa": "^0.17.0"
+    "react-unity-webgl": "8.8.0"
   },
   "devDependencies": {
-        "@types/react": "^18.2.15",
+    "@capacitor/cli": "7.6.8",
+    "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
@@ -30,6 +47,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
     "typescript": "^5.0.2",
-    "vite": "^4.4.5"
+    "vite": "^4.4.5",
+    "vite-plugin-pwa": "^0.17.0"
   }
 }

@@ -1,0 +1,123 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/meharajM/scroll-games/main/api/Games/games.schema.json",
+  "title": "Scroll Games catalog",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "games"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "games": {
+      "type": "array",
+      "maxItems": 500,
+      "items": { "$ref": "#/$defs/game" }
+    }
+  },
+  "$defs": {
+    "httpsUrl": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://"
+    },
+    "game": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "description",
+        "version",
+        "developer",
+        "destination",
+        "genres",
+        "orientation",
+        "minimumAge",
+        "estimatedDownloadMb",
+        "status",
+        "source"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+          "minLength": 3,
+          "maxLength": 80
+        },
+        "name": { "type": "string", "minLength": 1, "maxLength": 80 },
+        "description": { "type": "string", "minLength": 10, "maxLength": 240 },
+        "version": {
+          "type": "string",
+          "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+        },
+        "developer": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["name", "url"],
+          "properties": {
+            "name": { "type": "string", "minLength": 1, "maxLength": 80 },
+            "url": { "$ref": "#/$defs/httpsUrl" }
+          }
+        },
+        "destination": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["url", "label", "platform"],
+          "properties": {
+            "url": { "$ref": "#/$defs/httpsUrl" },
+            "label": { "enum": ["wishlist", "download", "buy", "follow"] },
+            "platform": { "type": "string", "minLength": 1, "maxLength": 40 }
+          }
+        },
+        "genres": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 5,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          }
+        },
+        "orientation": {
+          "enum": ["portrait", "landscape", "any"]
+        },
+        "minimumAge": {
+          "type": "integer",
+          "minimum": 4,
+          "maximum": 18
+        },
+        "estimatedDownloadMb": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 50
+        },
+        "status": { "enum": ["active", "hidden"] },
+        "source": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["type", "gameId"],
+              "properties": {
+                "type": { "const": "managed-unity" },
+                "gameId": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9_-]+$"
+                }
+              }
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["type", "url"],
+              "properties": {
+                "type": { "const": "hosted-page" },
+                "url": { "$ref": "#/$defs/httpsUrl" }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

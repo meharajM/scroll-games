@@ -1,4 +1,15 @@
 node_modules
+.env
+.env.*
+!.env.example
+*.log
+coverage
 .vercel
-api/.env
-client/.env
+api/.env*
+!api/.env.example
+client/.env*
+!client/.env.native
+client/dist
+playwright-report
+test-results
+.DS_Store

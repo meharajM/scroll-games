@@ -1,52 +1,126 @@
 .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: transparent;
-  }
-  
-  .content {
-    flex-grow: 1;
-  }
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
 
-  @keyframes wave {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
-  
-  .actions {
-    position: absolute;
-    right: 8px;
-    bottom: 8px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    height: 100vh;
-    width: 40px;
-    transition: background-color 0.5s ease;
-  }
+.content {
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+}
 
-  .actions.Up, .actions.Down {
-    /* background: linear-gradient(45deg, red, blue); */
-    background-size: 200% 200%;
-    animation: wave 5s ease infinite;
-    background-color: rgba(255, 255, 255, 0.2);
-  }
-  
-  .action-button {
-    margin-bottom: 10px;
-    padding: 8px;
-  }
-  
+.game-summary {
+  position: absolute;
+  z-index: 3;
+  left: max(10px, env(safe-area-inset-left, 0px));
+  bottom: max(10px, env(safe-area-inset-bottom, 0px));
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px 10px;
+  align-items: center;
+  width: min(calc(100% - 86px), 330px);
+  padding: 12px;
+  color: var(--brand-paper);
+  background: var(--brand-ink);
+  border: 1px solid var(--brand-surface-raised);
+  border-radius: 14px;
+  box-shadow: 0 10px 34px rgb(27 23 18 / 35%);
+}
+
+.game-summary-copy {
+  display: grid;
+  min-width: 0;
+}
+
+.game-summary strong,
+.game-summary span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.game-summary-copy > span {
+  margin-top: 2px;
+  color: var(--brand-paper-muted);
+  font-size: 0.75rem;
+}
+
+.destination-button {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 8px 12px;
+  color: var(--brand-paper);
+  background: var(--brand-orange-dark);
+  border-radius: 9px;
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.browse-button {
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: end;
+  display: inline-flex;
+  gap: 5px;
+  align-items: center;
+  min-height: 40px;
+  padding: 7px 9px;
+  color: var(--brand-ink);
+  background: var(--brand-orange);
+}
+
+.actions {
+  position: absolute;
+  z-index: 2;
+  top: env(safe-area-inset-top, 0px);
+  right: max(8px, env(safe-area-inset-right, 0px));
+  bottom: max(8px, env(safe-area-inset-bottom, 0px));
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  width: 56px;
+  touch-action: none;
+  transition: background-color 160ms ease-out;
+}
+
+.actions.Up,
+.actions.Down { background: rgb(255 241 214 / 14%); }
+
+.action-button {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  min-width: 48px;
+  height: 48px;
+  margin-top: 10px;
+  padding: 0;
+  color: var(--brand-paper);
+  background: var(--brand-ink);
+  border: 1px solid var(--brand-surface-raised);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.action-button:disabled {
+  cursor: wait;
+  opacity: 0.5;
+}
+
+@media (hover: hover) {
+  .destination-button:hover { background: var(--brand-orange); color: var(--brand-ink); }
+  .browse-button:hover { background: var(--brand-paper); }
+  .action-button:hover:not(:disabled) { background: var(--brand-orange-dark); }
+}
+
+@media (max-height: 560px) and (orientation: landscape) {
+  .destination-button { display: none; }
+}

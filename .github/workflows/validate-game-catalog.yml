@@ -1,0 +1,37 @@
+name: Validate game catalog
+
+on:
+  pull_request:
+    paths:
+      - api/Games/gamesMeta.json
+      - api/Games/games.schema.json
+      - scripts/validate-games.mjs
+      - scripts/validate-game-submission.mjs
+      - scripts/validate-game-submission.test.mjs
+  push:
+    branches: [main]
+    paths:
+      - api/Games/gamesMeta.json
+      - api/Games/games.schema.json
+      - scripts/validate-games.mjs
+      - scripts/validate-game-submission.mjs
+      - scripts/validate-game-submission.test.mjs
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+      - run: node scripts/validate-games.mjs
+      - run: node --test scripts/validate-game-submission.test.mjs
+      - name: Enforce the external submission boundary
+        if: github.event_name == 'pull_request'
+        run: node scripts/validate-game-submission.mjs api/Games/gamesMeta.json ${{ github.event.pull_request.base.sha }}

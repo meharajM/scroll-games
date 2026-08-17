@@ -1,0 +1,45 @@
+name: Report a game trial
+description: Report safety, privacy, rights, rating, or technical concerns in a listed game.
+title: "[Game report] "
+labels: ["game-report"]
+body:
+  - type: input
+    id: game
+    attributes:
+      label: Game name or ID
+      placeholder: example-game
+    validations:
+      required: true
+  - type: dropdown
+    id: concern
+    attributes:
+      label: Concern
+      options:
+        - Inappropriate or unsafe content
+        - Incorrect age rating
+        - Privacy or data collection
+        - Copyright, trademark, or impersonation
+        - Security or deceptive behavior
+        - Broken or unusable trial
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: What happened?
+      description: Do not include passwords, personal data, or other sensitive information.
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Device and OS
+      placeholder: iPhone 15 / iOS 18, or Pixel 9 / Android 16
+  - type: checkboxes
+    id: urgent
+    attributes:
+      label: Confirmation
+      options:
+        - label: I understand this is a public report and contains no sensitive information.
+          required: true
