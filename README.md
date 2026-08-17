@@ -66,7 +66,7 @@ Submissions are proposals, not automatic publication. Maintainers review quality
 
 ## Local development
 
-Requirements: Node.js 20 or newer and npm.
+Requirements: Node.js 20.19 or newer and npm.
 
 ```bash
 git clone https://github.com/meharajM/scroll-games.git

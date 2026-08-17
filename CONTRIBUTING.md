@@ -13,7 +13,7 @@ By participating, you agree to follow the [Code of Conduct](CODE_OF_CONDUCT.md).
 
 ## Development setup
 
-Use Node.js 20 or newer.
+Use Node.js 20.19 or newer.
 
 ```bash
 npm install

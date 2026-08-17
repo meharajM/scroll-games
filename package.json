@@ -29,11 +29,11 @@
     "test:e2e": "npm --prefix client ci && playwright test"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=20.19"
   },
   "devDependencies": {
     "@playwright/test": "1.62.1",
-    "@vitejs/plugin-react": "4.1.0",
-    "vite": "4.5.14"
+    "@vitejs/plugin-react": "5.1.4",
+    "vite": "7.3.6"
   }
 }

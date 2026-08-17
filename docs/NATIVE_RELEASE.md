@@ -4,7 +4,7 @@ Scroll Games ships the Vite bundle inside Capacitor projects. Production native 
 
 ## Toolchain
 
-- Node.js 20 or newer and npm.
+- Node.js 20.19 or newer and npm.
 - Capacitor 7.6.8. This is the newest maintained line compatible with Xcode 16; Capacitor 8 requires Xcode 26.
 - Xcode 16 or newer, CocoaPods, and an Apple silicon or Intel iOS Simulator runtime.
 - JDK 21, Android SDK Platform 36, and Android SDK Build Tools. The project uses Android Gradle Plugin 8.9.1 and the Gradle 8.11.1 wrapper.
